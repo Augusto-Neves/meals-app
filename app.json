@@ -11,14 +11,14 @@
       "resizeMode": "contain",
       "backgroundColor": "#24180f"
     },
+    "backgroundColor": "#24180f",
     "assetBundlePatterns": ["**/*"],
     "ios": {
       "supportsTablet": true
     },
     "android": {
       "adaptiveIcon": {
-        "foregroundImage": "./assets/adaptive-icon.png",
-        "backgroundColor": "#ffffff"
+        "foregroundImage": "./assets/adaptive-icon.png"
       }
     },
     "web": {

@@ -1,6 +1,6 @@
 import { Pressable, StyleSheet, Text, View, Platform } from "react-native";
 
-export function CategoryGridTile({ title, color }) {
+export function CategoryGridTile({ title, color, onPress }) {
   const backgroundColor = {
     backgroundColor: color,
   };
@@ -13,6 +13,7 @@ export function CategoryGridTile({ title, color }) {
           styles.button,
           pressed && styles.buttonPressed,
         ]}
+        onPress={onPress}
       >
         <View style={[styles.innerContainer, backgroundColor]}>
           <Text style={styles.title}>{title}</Text>
