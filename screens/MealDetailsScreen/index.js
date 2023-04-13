@@ -1,6 +1,6 @@
 import { View, Text } from "react-native";
 
-export function MealDetailsScreen() {
+export function MealsDetailsScreen() {
   return (
     <View>
       <Text>Meal Details</Text>
