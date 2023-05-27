@@ -1,5 +1,4 @@
 import { StatusBar } from "expo-status-bar";
-import { StyleSheet } from "react-native";
 import { CategoriesScreen } from "./screens/CategoriesScreen";
 import { NavigationContainer } from "@react-navigation/native";
 import { createStackNavigator } from "@react-navigation/stack";
@@ -8,7 +7,9 @@ import { MealsOverviewScreen } from "./screens/MealsOverviewScreen";
 import { createDrawerNavigator } from "@react-navigation/drawer";
 import { FavoritesScreen } from "./screens/FavoritesScreen";
 import { Ionicons } from "@expo/vector-icons";
-import { FavoritesContextProvider } from "./store/context/favoritesContext";
+//import { FavoritesContextProvider } from "./store/context/favoritesContext";
+import { Provider } from "react-redux";
+import { store } from "./store/redux/store";
 
 const Stack = createStackNavigator();
 const Drawer = createDrawerNavigator();
@@ -58,7 +59,8 @@ function DrawNavigator() {
 
 export default function App() {
   return (
-    <FavoritesContextProvider>
+    // <FavoritesContextProvider>
+    <Provider store={store}>
       <StatusBar style="light" />
       <NavigationContainer>
         <Stack.Navigator
@@ -67,34 +69,33 @@ export default function App() {
             headerTintColor: "white",
             headerStyle: {
               backgroundColor: "#351401",
+              height: 100
             },
             cardStyle: {
               backgroundColor: "#3f2f25",
             },
+            headerBackTitleVisible: false,
           }}
-        >
+          >
           <Stack.Screen
             name="MealsCategories"
             component={DrawNavigator}
             options={{ headerShown: false }}
-          />
+            />
           <Stack.Screen
             name="MealsOverview"
             component={MealsOverviewScreen}
             // options={({ route, navigation }) => {
-            //   const categoryId = route.params.categoryId;
-            //   return {
-            //     title: categoryId,
-            //   };
-            // }}
-          />
+              //   const categoryId = route.params.categoryId;
+              //   return {
+                //     title: categoryId,
+                //   };
+                // }}
+                />
           <Stack.Screen name="MealDetails" component={MealsDetailsScreen} />
         </Stack.Navigator>
       </NavigationContainer>
-    </FavoritesContextProvider>
+    {/* </FavoritesContextProvider> */}
+  </Provider>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {},
-});
